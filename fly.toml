@@ -1,24 +1,30 @@
-app = "shop-mvp"
-primary_region = "iad"
+# fly.toml app configuration file generated for rockbuy1 on 2026-11-07T23:49:30Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'rockbuy1'
+primary_region = 'ams'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  PORT = "8000"
+  PORT = '8000'
 
-[mounts]
-  source = "shopdata"
-  destination = "/data"
+[[mounts]]
+  source = 'shopdata'
+  destination = '/data'
 
 [http_service]
-  internal_port = 8000
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 1
 
 [[vm]]
-  memory = "512mb"
-  cpu_kind = "shared"
+  memory = '512mb'
+  cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 256
